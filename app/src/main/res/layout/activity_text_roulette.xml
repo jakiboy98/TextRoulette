@@ -9,7 +9,7 @@
     <EditText
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:id="@+id/messageText"
+        android:id="@+id/smsBody"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:hint="Message"
@@ -19,9 +19,9 @@
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:text="@string/Send"
-        android:id="@+id/sendButton"
+        android:id="@+id/send"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/messageText"
+        android:layout_toEndOf="@+id/smsBody"
         android:layout_alignParentEnd="true"
         android:hint="Send"
         android:background="#00CC00" />
@@ -32,14 +32,14 @@
         android:text="New Number"
         android:id="@+id/randomNumberButton"
         android:background="#00CC00"
-        android:layout_below="@+id/numberView"
+        android:layout_below="@+id/mobileNumber"
         android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:id="@+id/numberView"
-        android:layout_below="@+id/messageText"
+        android:id="@+id/mobileNumber"
+        android:layout_below="@+id/smsBody"
         android:layout_centerHorizontal="true"
         android:text="Number" />
 
