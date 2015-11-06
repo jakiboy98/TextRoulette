@@ -26,21 +26,27 @@
         android:hint="Send"
         android:background="#00CC00" />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="New Number"
-        android:id="@+id/randomNumberButton"
-        android:background="#00CC00"
-        android:layout_below="@+id/mobileNumber"
-        android:layout_centerHorizontal="true" />
-
     <EditText
-        android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
         android:id="@+id/mobileNumber"
         android:layout_below="@+id/smsBody"
-        android:layout_centerHorizontal="true"
-        android:text="Number" />
+        android:hint="Number"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Message Generator"
+        android:id="@+id/messageGen"
+        android:layout_below="@+id/mobileNumber"
+        android:textColor="#fefff4"
+        android:background="#00CC00"
+        android:layout_alignLeft="@+id/mobileNumber"
+        android:layout_alignStart="@+id/mobileNumber"
+        android:layout_alignRight="@+id/mobileNumber"
+        android:layout_alignEnd="@+id/mobileNumber" />
 
 </RelativeLayout>

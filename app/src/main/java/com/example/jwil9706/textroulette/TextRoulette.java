@@ -15,15 +15,26 @@ import java.util.Random;
 import android.telephony.SmsManager;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
+import java.util.ArrayList;
 
 
-public class MainActivity extends Activity
-{
+public class TextRoulette extends Activity {
 
     private Button shareIntent;
     private Button send;
     private EditText phoneNo;
     private EditText messageBody;
+    private ArrayList<String> messageList;
+    private Button messageGen;
+
+    private void buildMessageList()
+    {
+        this.messageList.add("This is a message to you");
+        this.messageList.add("I made this for you");
+        this.messageList.add("How you dewin");
+        this.messageList.add("So you want to talk about weather?");
+        this.messageList.add("Spanish");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,40 +44,32 @@ public class MainActivity extends Activity
 
         phoneNo = (EditText) findViewById(R.id.mobileNumber);
         messageBody = (EditText) findViewById(R.id.smsBody);
-
         send = (Button) findViewById(R.id.send);
+        shareIntent = (Button) findViewById(R.id.send);
+
         send.setOnClickListener(new OnClickListener()
         {
-            @Override
-            public void onClick(View v) {
-                String number = phoneNo.getText().toString();
-                String sms = messageBody.getText().toString();
-
-                try {
-                    SmsManager smsManager = SmsManager.getDefault();
-                    smsManager.sendTextMessage(number, null, sms, null, null);
-                    Toast.makeText(getApplicationContext(), "SMS Sent!",
-                            Toast.LENGTH_LONG).show();
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(),
-                            "SMS faild, please try again later!",
-                            Toast.LENGTH_LONG).show();
-                    e.printStackTrace();
-                }
+            public void onClick(View v)
+            {
+                sendSms();
             }
+
         });
 
-        shareIntent = (Button) findViewById(R.id.send);
         shareIntent.setOnClickListener(new OnClickListener()
         {
             @Override
-            public void onClick(View v) {
-                try {
+            public void onClick(View v)
+            {
+                try
+                {
                     Intent sendIntent = new Intent(Intent.ACTION_VIEW);
                     sendIntent.putExtra("sms_body", messageBody.getText().toString());
                     sendIntent.setType("vnd.android-dir/mms-sms");
                     startActivity(sendIntent);
-                } catch (Exception e) {
+                }
+                catch (Exception e)
+                {
                     Toast.makeText(getApplicationContext(),
                             "SMS faild, please try again later!",
                             Toast.LENGTH_LONG).show();
@@ -76,9 +79,31 @@ public class MainActivity extends Activity
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
+    messageGen.setOnClickListener(new View.OnClickListener()
     {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        public void onClick(View)
+            {
+                    
+            }
+    });
+
+    protected void sendSms()
+    {
+        String number = phoneNo.getText().toString();
+        String message = messageBody.getText().toString();
+
+        try {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(number, null, message, null, null);
+            Toast.makeText(getApplicationContext(), "SMS sent.",
+                    Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(),
+                    "SMS faild, please try again.",
+                    Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
     }
+
+
+}
